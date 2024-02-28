@@ -83,8 +83,23 @@ Node* llfilter(Node* head, Comp pred)
     //*********************************************
     // Provide your implementation below
     //*********************************************
+    
+    // Goal: return your address or Node* after you that is still alive
+    // Recursion implementation: tail recursion
 
-
+    // base case: last node in head linked list
+    if(head != NULL) {
+      Node* previous = llfilter(head->next, pred);
+      if(!pred(head->val)) {
+        head->next = previous;
+        return head;
+      }
+      else {
+        delete head;
+        return previous;
+      }
+    }
+    else return NULL;
 }
 
 #endif

@@ -66,10 +66,10 @@ void dealloc(Node* head)
 //   Add any helper functions or
 //   function object struct declarations
 // -----------------------------------------------
-
-
-
-
+struct isOdd {
+  bool operator()(int val)
+    { return val % 2; }
+};
 
 int main(int argc, char* argv[])
 {
@@ -86,10 +86,28 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
+    // Test 1: linked list split/pivot
+    Node* smaller = NULL;
+    Node* larger = NULL;
+    llpivot(head, smaller, larger, 10);
+    cout << endl << "Original list after llpivot() call: ";
+    print(head);
+    cout << "Smaller list after llpivot() call: ";
+    print(smaller);
+    cout << "Larger list after llpivot() call: ";
+    print(larger);
+    cout << endl;
+    dealloc(smaller);
+    dealloc(larger);
 
+    // Test 2: linked list filter
+    head = readList(argv[1]);
+    isOdd cond;
+    llfilter(head, cond);
+    cout << "List after llfilter() call: ";
+    print(head);
+    cout << endl;
+    dealloc(head);
 
-
-    
     return 0;
-
 }
