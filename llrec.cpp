@@ -67,4 +67,8 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot)
     }
     head = NULL;
   }
+  else {
+    smaller = NULL;
+    larger = NULL;
+  }
 }
