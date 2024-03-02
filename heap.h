@@ -11,6 +11,7 @@ class Heap
 {
 public:
   Heap(int m=2, PComparator c = PComparator());
+  Heap(PComparator c, int m = 2);
   ~Heap();
   void push(const T& item);
   T const & top() const;
@@ -18,14 +19,13 @@ public:
   bool empty() const;
   size_t size() const;
 
-  std::vector<T> items_;
-
 private:
   /// Add whatever helper functions and data members you need below
   void trickleDown();
   void trickleUp(int loc);
   int m_;
   PComparator c_;
+  std::vector<T> items_;
 };
 
 // Add implementation of member functions here
