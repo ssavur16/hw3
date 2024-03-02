@@ -13,7 +13,6 @@
 
 Circuit::Circuit() : m_current_time(0)
 {
-    
 }
 
 Circuit::~Circuit()
@@ -46,7 +45,7 @@ void Circuit::test()
 	e = new Event {4,m_wires[0],'1'};
 	m_pq.push(e);
 
-  e = new Event {6,m_wires[1],'0'};
+    e = new Event {6,m_wires[1],'0'};
 	m_pq.push(e);
 	
 }
@@ -110,6 +109,14 @@ bool Circuit::parse(const char* fname)
                     m_gates.push_back(new Or2Gate(m_wires[stoi(s_in1)], m_wires[stoi(s_in2)], m_wires[stoi(s_output)]));
                 }
                 //Add code here to support the NOT gate type
+                if(s_type == "NOT")
+                {
+                  std::string s_in1;
+                  getline(ss, s_in1, ',');
+                  std::string s_output;
+                  getline(ss, s_output, ',');
+                  m_gates.push_back(new NotGate(m_wires[stoi(s_in1)], m_wires[stoi(s_output)]));
+                }
             }
         }
         if(line == "INJECT")

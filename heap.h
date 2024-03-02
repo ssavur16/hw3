@@ -11,7 +11,6 @@ class Heap
 {
 public:
   Heap(int m=2, PComparator c = PComparator());
-  Heap(PComparator c, int m = 2);
   ~Heap();
   void push(const T& item);
   T const & top() const;
